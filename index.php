@@ -31,6 +31,18 @@ foreach ($fileJson as $value)
 }
 
 
+
+if (isset($_GET['id'])&& trim($_GET['id']) !== '')
+{
+    $ident=$_GET['id'];
+    $OggettiJson=array_filter($OggettiJson , searchTextid($ident));
+}
+else
+{
+    $name='';
+}
+
+
 if (isset($_GET['nome'])&& trim($_GET['nome']) !== '')
 {
     $name=sanitizeName($_GET['nome']);

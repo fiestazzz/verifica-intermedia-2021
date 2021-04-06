@@ -37,6 +37,15 @@ function searchTexteta($eta)
     };
 }
 
+function searchTextid($id)
+{
+    return function($Oggetto) use ($id)
+    {
+        $result=stripos($Oggetto->GetUserId(), $id) !==false;
+        return $result;
+    };
+}
+
 
 
 
