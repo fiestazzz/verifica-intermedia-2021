@@ -1,4 +1,5 @@
-<?php    
+<?php 
+require './lib/sanitize.php';   
  class User
  {
 
@@ -121,7 +122,6 @@
         $Oggi= new DateTime();
         $result=$Oggi->diff($b_day);
         
-   
        return $result->format('%y');
     }
    

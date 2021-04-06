@@ -7,21 +7,9 @@ require './lib/sanitize.php';
 $fileJson=JSONReader('./dataset/users-management-system.json');
 
 
-foreach ($fileJson as  $value) 
-{
-   $primoNome=$value['firstName'];
-   $secondoNome=$value['lastName'];
-   $Nsanificato=sanitizeName($primoNome);
-   $value['firstName']=$Nsanificato;
-   $Csanificato=sanitizeName($secondoNome);
-   $value['lastName']=$Csanificato;
-   
-}
-print_r($fileJson);
 
-
-$nomeSanificato=sanitizeName($_GET['nome']);
-$cognomeSanificato=sanitizeName($_GET['cognome']);
+/*$nomeSanificato=sanitizeName($_GET['nome']);
+$cognomeSanificato=sanitizeName($_GET['cognome']);*/
 
 
 
@@ -41,10 +29,6 @@ foreach ($fileJson as $value)
   
     $OggettiJson[]=$user;
 }
-
-
-
-
 
 
 
@@ -108,7 +92,7 @@ foreach ($fileJson as $value)
                 </th>
 
                 <th>
-                    <input class="form-control" type="text" name="età">
+                    <input class="form-control" type="text" name="eta">
                 </th>
                 <th>
                     <button type="submit" class="btn btn-primary">cerca</button>
