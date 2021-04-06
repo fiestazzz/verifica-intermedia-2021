@@ -51,6 +51,28 @@ else
     $surname='';
 }
 
+if (isset($_GET['email'])&& trim($_GET['email']) !== '')
+{
+    $email=sanitizeName($_GET['email']);
+    $OggettiJson=array_filter($OggettiJson , searchTextEmail($email));
+}
+else
+{
+    $email='';
+}
+
+if (isset($_GET['eta'])&& trim($_GET['eta']) !== '')
+{
+    $age=$_GET['eta'];
+    $OggettiJson=array_filter($OggettiJson , searchTexteta($age));
+}
+else
+{
+    $age='';
+}
+
+
+
 
 
 ?>
@@ -108,11 +130,11 @@ else
                 </th>
 
                 <th>
-                    <input class="form-control" type="text" name="email">
+                    <input class="form-control" type="text" name="email" value="<?=$email?>">
                 </th>
 
                 <th>
-                    <input class="form-control" type="text" name="eta">
+                    <input class="form-control" type="text" name="eta" value="<?= $age?>">
                 </th>
                 <th>
                     <button type="submit" class="btn btn-primary">cerca</button>
