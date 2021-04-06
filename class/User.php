@@ -1,5 +1,4 @@
-<?php 
-require './lib/sanitize.php';   
+<?php    
  class User
  {
 

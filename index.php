@@ -1,7 +1,7 @@
 <?php
 require './class/User.php';
 require './lib/GetContentJson.php';
-require './lib/UsersSearchFunctions.php';
+require './lib/searchFunctions.php';
 require './lib/sanitize.php';
 
 $fileJson=JSONReader('./dataset/users-management-system.json');
@@ -21,8 +21,8 @@ foreach ($fileJson as $value)
 {
     $user= new User();
     $user->setUserid($value['id']);
-    $user->setFirstName($value['firstName']);
-    $user->setLastName($value['lastName']);
+    $user->setFirstName(sanitizeName($value['firstName']));
+    $user->setLastName(sanitizeName($value['lastName']));
     $user->setEmail($value['email']);
     $user->setBirthday($value['birthday']);
 
@@ -30,6 +30,26 @@ foreach ($fileJson as $value)
     $OggettiJson[]=$user;
 }
 
+
+if (isset($_GET['nome'])&& trim($_GET['nome']) !== '')
+{
+    $name=sanitizeName($_GET['nome']);
+    $OggettiJson=array_filter($OggettiJson , searchTextNome($name));
+}
+else
+{
+    $name='';
+}
+
+if (isset($_GET['cognome'])&& trim($_GET['cognome']) !== '')
+{
+    $surname=sanitizeName($_GET['cognome']);
+    $OggettiJson=array_filter($OggettiJson , searchTextCognome($surname));
+}
+else
+{
+    $surname='';
+}
 
 
 
@@ -76,15 +96,15 @@ foreach ($fileJson as $value)
             </tr>
             <tr>
                 <th>
-                    <input class="form-control" type="text" name="id">
+                    <input class="form-control" type="text" name="id" >
                 </th>
 
                 <th>
-                    <input class="form-control" type="text" name="nome">
+                    <input class="form-control" type="text" name="nome" value="<?=$name?>">
                 </th>
 
                 <th>
-                    <input class="form-control" type="text" name="cognome">
+                    <input class="form-control" type="text" name="cognome" value="<?= $surname?>">
                 </th>
 
                 <th>
