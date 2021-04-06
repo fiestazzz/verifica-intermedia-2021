@@ -1,5 +1,12 @@
 <?php
+require './class/User.php';
+require './lib/sanitize.php';
+require './lib/searchFunctions.php';
+require './lib/funzioneCreaOggetti.php';
+
+
 $users = include(__DIR__."/mockdata_array.php");
+
 // Test ricerca omonimi
 // expectedResult è il risultato della funzione  count applicato al risultato della ricerca 
 $testResultsDataset = array(
@@ -32,8 +39,18 @@ $testResultsDataset = array(
 
 foreach ($testResultsDataset as $row) {
         extract($row);
-		/**
-		 * scrivi qui il tuo test
-		 */
+		$Users=UserFactory($users);
+		$Users=array_filter($Users , searchTextNome($firstName));
+		$Users=array_filter($Users , searchTextCognome($lastName));
+		if($expectedResult === count($Users))
+		{
+			echo "Pass";
+		}
+		else
+		{
+			echo "Fail";
+		}
+
+		
         
 }

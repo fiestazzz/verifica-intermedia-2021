@@ -3,6 +3,7 @@ require './class/User.php';
 require './lib/GetContentJson.php';
 require './lib/searchFunctions.php';
 require './lib/sanitize.php';
+require './lib/funzioneCreaOggetti.php';
 
 $fileJson=JSONReader('./dataset/users-management-system.json');
 
@@ -14,22 +15,10 @@ $cognomeSanificato=sanitizeName($_GET['cognome']);*/
 
 
 
-$OggettiJson=[];
 
+$OggettiJson= UserFactory($fileJson);
 
-foreach ($fileJson as $value) 
-{
-    $user= new User();
-    $user->setUserid($value['id']);
-    $user->setFirstName(sanitizeName($value['firstName']));
-    $user->setLastName(sanitizeName($value['lastName']));
-    $user->setEmail($value['email']);
-    $user->setBirthday($value['birthday']);
-
-  
-    $OggettiJson[]=$user;
-}
-
+ 
 
 
 if (isset($_GET['id'])&& trim($_GET['id']) !== '')
