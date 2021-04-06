@@ -1,17 +1,13 @@
 <?php    
  class User
  {
+
+
     private $userId;
     private $firstName;
     private $lastName;
     private $birthday;
     private $email;
-
-
-        
-
-
-
 
 
 

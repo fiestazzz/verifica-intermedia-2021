@@ -2,8 +2,28 @@
 require './class/User.php';
 require './lib/GetContentJson.php';
 require './lib/UsersSearchFunctions.php';
+require './lib/sanitize.php';
 
 $fileJson=JSONReader('./dataset/users-management-system.json');
+
+
+foreach ($fileJson as  $value) 
+{
+   $primoNome=$value['firstName'];
+   $secondoNome=$value['lastName'];
+   $Nsanificato=sanitizeName($primoNome);
+   $value['firstName']=$Nsanificato;
+   $Csanificato=sanitizeName($secondoNome);
+   $value['lastName']=$Csanificato;
+   
+}
+print_r($fileJson);
+
+
+$nomeSanificato=sanitizeName($_GET['nome']);
+$cognomeSanificato=sanitizeName($_GET['cognome']);
+
+
 
 
 $OggettiJson=[];
