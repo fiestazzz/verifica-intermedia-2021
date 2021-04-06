@@ -126,7 +126,7 @@
         $result=$Oggi->diff($b_day);
         
    
-       return $result;
+       return $result->format('%y');
     }
    
  }
