@@ -11,6 +11,7 @@ function UserFactory ($fileJson)
         $user->setLastName(sanitizeName($value['lastName']));
         $user->setEmail($value['email']);
         $user->setBirthday($value['birthday']);
+        $user->setMaggiorenne($user->isAdult());
         
         $OggettiJson[]=$user;   
     }

@@ -8,17 +8,7 @@ require './lib/funzioneCreaOggetti.php';
 $fileJson=JSONReader('./dataset/users-management-system.json');
 
 
-
-/*$nomeSanificato=sanitizeName($_GET['nome']);
-$cognomeSanificato=sanitizeName($_GET['cognome']);*/
-
-
-
-
-
 $OggettiJson= UserFactory($fileJson);
-
- 
 
 
 if (isset($_GET['id'])&& trim($_GET['id']) !== '')
@@ -111,11 +101,12 @@ else
         <form action="index.php" method="GET">
         <table class="table">
             <tr>
-                <th>id</th>
-                <th>nome</th>
-                <th>cognome</th>
-                <th>email</th>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Cognome</th>
+                <th>Email</th>
                 <th cellspan="2">età</th>
+                <th>Maggiorenne</th>
             </tr>
             <tr>
                 <th>
@@ -150,6 +141,7 @@ else
                 <td><?= $value->getLastName()?></td>
                 <td><?= $value->getEmail() ?></td>
                 <td><?= $value->GetAge() ?></td>
+                <td style="text-decoration:underline"><?= (($value->getMaggiorenne()) === true) ?  "Maggiorenne" : "Minorenne"?></td>
             </tr>
 
            <?php  }   ?>

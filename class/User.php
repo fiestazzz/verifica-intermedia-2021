@@ -8,6 +8,7 @@
     private $lastName;
     private $birthday;
     private $email;
+    private $maggiorenne;
 
 
 
@@ -123,7 +124,33 @@
         
        return $result->format('%y');
     }
+
+    public function isAdult()
+    {
+        $eta=$this->GetAge();
+        return $eta>18;
+    }
    
+
+    /**
+     * Get the value of maggiorenne
+     */ 
+    public function getMaggiorenne()
+    {
+        return $this->maggiorenne;
+    }
+
+    /**
+     * Set the value of maggiorenne
+     *
+     * @return  self
+     */ 
+    public function setMaggiorenne($maggiorenne)
+    {
+        $this->maggiorenne = $maggiorenne;
+
+        return $this;
+    }
  }
 
 
