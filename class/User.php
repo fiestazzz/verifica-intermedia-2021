@@ -115,8 +115,24 @@
 
         return $this;
     }
+
+
+
+    public function GetAge()
+    {
+        $dataDiNascita=$this->getBirthday();
+        $b_day= new DateTime($dataDiNascita);
+        $Oggi= new DateTime();
+        $result=$Oggi->diff($b_day);
+        
+   
+       return $result;
+    }
+   
  }
 
+
+ 
 
 
 

@@ -8,6 +8,7 @@ $fileJson=JSONReader('./dataset/users-management-system.json');
 
 $OggettiJson=[];
 
+
 foreach ($fileJson as $value) 
 {
     $user= new User();
@@ -17,11 +18,12 @@ foreach ($fileJson as $value)
     $user->setEmail($value['email']);
     $user->setBirthday($value['birthday']);
 
+  
     $OggettiJson[]=$user;
 }
 
 
-print_r($_GET);
+
 
 
 
@@ -93,14 +95,14 @@ print_r($_GET);
                 </th>
             </tr>
             </form>
-            <?php foreach ($OggettiJson as $value) {?>
+            <?php foreach ($OggettiJson as $key => $value) {?>
 
             <tr>
                 <td><?= $value->getUserId() ?></td>
                 <td><?= $value->getFirstName() ?></td>
                 <td><?= $value->getLastName()?></td>
                 <td><?= $value->getEmail() ?></td>
-                <td>m<?= $value->getBirthday() ?></td>
+                <td><?= $value->GetAge() ?></td>
             </tr>
 
            <?php  }   ?>
