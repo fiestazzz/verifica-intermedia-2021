@@ -1,17 +1,13 @@
 <?php    
  class User
  {
+
+
     private $userId;
     private $firstName;
     private $lastName;
     private $birthday;
     private $email;
-
-
-        
-
-
-
 
 
 
@@ -125,7 +121,6 @@
         $Oggi= new DateTime();
         $result=$Oggi->diff($b_day);
         
-   
        return $result->format('%y');
     }
    
