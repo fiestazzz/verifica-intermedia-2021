@@ -32,8 +32,14 @@ function searchTexteta($eta)
 {
     return function($Oggetto) use ($eta)
     {
-        $result=stripos($Oggetto->GetAge(), $eta) !==false;
-        return $result;
+        if(floatval($Oggetto->GetAge()) === floatval($eta))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     };
 }
 
@@ -42,6 +48,15 @@ function searchTextid($id)
     return function($Oggetto) use ($id)
     {
         $result=stripos($Oggetto->GetUserId(), $id) !==false;
+        return $result;
+    };
+}
+
+function Ordina($lettera)
+{
+    return function ($oggetto) use ($lettera)
+    {
+        $result = stripos($oggetto->getLastName(),$lettera) !== false;
         return $result;
     };
 }
